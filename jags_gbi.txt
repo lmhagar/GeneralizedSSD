@@ -1,0 +1,16 @@
+model{
+    
+     C <- 100000  # this just has to be large enough to ensure all phi[i]'s > 0
+     
+    ## get absolute values
+    for (j in 1:n) {  
+      y_abs[j] <- pow(pow(y[j] - theta, 2), 0.5)
+    }
+
+     phi <- omega*sum(y_abs) + C
+     zero ~ dpois(phi)
+    
+    ## priors
+    theta ~ dunif(0, 10)
+
+}
