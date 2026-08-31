@@ -356,7 +356,7 @@ toc <- Sys.time()
 toc -tic
 
 ## set parameters for designs 5 and 6
-wei.par <- c(0.062, 2.25, -0.8)
+wei.par <- c(0.08, 2.25, -0.8)
 
 ## precompute summary statistics for logpl
 ## inputs are survival times (surv.time) and
@@ -621,7 +621,7 @@ for (k in 1:length(n_vals)){
                        make_sampler.i <- make_sampler(bres.temp$H0, bres.temp$time)
                        
                        ## draw new hazard ratios
-                       new.par <- rnorm(draws, mu0_loss, sigma0_loss)
+                       new.par <- rnorm(draws, mu0_loss, sqrt(sigma0_loss))
                        
                        ## get data for artficially censored observations
                        n.art <- sum(artif == 1)
